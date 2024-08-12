@@ -1,95 +1,43 @@
-import Image from "next/image";
+'use client';
 import styles from "./page.module.css";
+import { useState } from 'react';
+import { BsSun, BsMoonStars } from 'react-icons/bs';
 
 export default function Home() {
+
+  const [alterarTema, setAlterarTema] = useState(false)
+
+  function trocarTemaPagina() {
+    setAlterarTema(!alterarTema)
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
+    <div className={alterarTema ? styles.dark_mode : styles.light_mode}>
+
+      <header className={styles.header_container}>
+
+        <h1>Coffe Shop</h1>
+
+        <button onClick={trocarTemaPagina}>{alterarTema ? <BsSun /> : <BsMoonStars />}</button>
+
+      </header>
+
+      <main className={styles.main_container}>
+
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
+          <h2>A melhor cafeteria do Brasil</h2>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            Venha conhecer a melhor cafeteria do Brasil! Localizada no coração de
+            São Paulo, oferecemos cafés artesanais de alta qualidade e um ambiente
+            acolhedor. Desfrute de nossas bebidas exclusivas e deliciosos acompanhamentos
+            enquanto relaxa em um espaço único. Esperamos por você para uma experiência
+            inesquecível!
           </p>
-        </a>
-      </div>
-    </main>
+          <button>Nossas Lojas</button>
+        </div>
+
+      </main>
+
+    </div>
   );
 }
